@@ -1,0 +1,49 @@
+
+service: ludo
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage : dev
+  region: ap-south-1
+  role: arn:aws:iam::667505010803:role/wss-lambda-execute
+  websocketApiRouteSelectionExpression: $request.body.action
+  timeout: 10
+
+plugins:
+  - serverless-offline
+
+functions:
+  connect:
+    handler: src/events/connectionHandler.handler
+    events:
+     - websocket : $connect
+  disonnect:
+    handler: src/events/disconnectHandler.handler
+    events:
+     - websocket : $disconnect
+  getPendingNotifications:
+    handler: src/events/getPendingNotifications.handler
+    events:
+     - websocket : getPendingNotifications
+  clearUPINotificationStatus:
+    handler: src/events/clearUPINotificationStatus.handler
+    events:
+     - websocket : clearUPINotificationStatus
+  api:
+    handler: index.execute
+    events:
+     - http:
+         path: /{proxy+}
+         method: ANY
+         cors: true
+  eventReward:
+    handler: src/cron/eventReward.handler
+    events:
+     - schedule:
+         rate: rate(1 minute)
+         enabled: true
