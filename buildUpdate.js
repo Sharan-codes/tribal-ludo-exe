@@ -1,42 +1,11 @@
 const {argv}=require('yargs');
 
-const fs = require('fs')
+const fs = require('fs-extra')
 
 try {
-console.log("Build update running");
-console.log(argv);
- /*
-yargs(hideBin(process.argv))
-  .command('copy [configPath..]', 'copy files to config', (yargs) => {
-    yargs
-      .positional('configPath', {
-        describe: 'path of files to copy',
-        type: 'string'
-      });
-  }, (argv) => {
-    console.info(argv);
-        
-    const srcDir = `index.js`;
-    const destDir = `build/exe/`;
-
-    argv.configPath.map(path => {
-      
-      // To copy a folder or file
-      fs.copyFile(path, destDir+path, function (err) {
-        if (err) {
-          console.error("Error"+err);
-        } else {
-          console.log("success!");
-        }
-      });
-    });
-
-    
-  })
-  .argv
-*/
-    
-  const srcDir = `index.js`;
+  console.log("Build update running");
+  console.log(argv);
+ 
   const destDir = `build/exe/`;
   let filePaths = [];
   if (argv.configPath) {
@@ -48,7 +17,7 @@ yargs(hideBin(process.argv))
 
     filePaths.map(path => {
       // To copy a folder or file
-      fs.copyFile(path, destDir+path, function (err) {
+      fs.copy(path, destDir+path, function (err) {
         if (err) {
           console.error("Error"+err);
         } else {
