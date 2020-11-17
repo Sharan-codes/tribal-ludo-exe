@@ -1,4 +1,4 @@
-const roomUserModel = require('./models/roomUser.js');
+const roomUserModel = require('./models/roomUser');
 
 const global = require('../../global');
 

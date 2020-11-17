@@ -1,6 +1,6 @@
 let utility = [];
 const mgUserLib = require('../databaseLib/user.lib');
-const inviteActivityLib = require('../../library/databaseLib/inviteActivity.lib.js');
+const inviteActivityLib = require('../../library/databaseLib/inviteActivity.lib');
 const global = require("../../global");
 const webSocketHelper = require("../../library/utilityLib/websocketHelper");
 

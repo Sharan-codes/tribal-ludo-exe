@@ -2,7 +2,7 @@ const global = require('../global');
 const restBase = require("../base/restBase.class");
 const utility = require("../library/utilityLib/utility");
 const mgUserLib = require('../library/databaseLib/user.lib');
-const mgEventLib = require('../library/databaseLib/event.lib.js');
+const mgEventLib = require('../library/databaseLib/event.lib');
 const mgEventActivityLib = require('../library/databaseLib/eventActivity.lib');
 const { sendPushNotification } = require("../library/utilityLib/pushNotificationHelper");
 

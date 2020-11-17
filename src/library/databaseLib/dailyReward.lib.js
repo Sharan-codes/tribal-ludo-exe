@@ -1,5 +1,5 @@
 const global = require('../../global');
-const dailyRewardModel = require('./models/dailyReward.js');
+const dailyRewardModel = require('./models/dailyReward');
 
 let dailyRewardLib = [];
 

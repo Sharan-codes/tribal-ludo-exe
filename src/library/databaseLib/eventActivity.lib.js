@@ -1,4 +1,4 @@
-const eventActivityModel = require('./models/eventActivity.js');
+const eventActivityModel = require('./models/eventActivity');
 const global = require('../../global');
 
 let eventActivityLib = [];

@@ -1,3 +1,4 @@
+const bytenode = require('bytenode');
 const express = require('express');
 const http = require('http');
 require('./src/base/env');
@@ -28,6 +29,6 @@ app.all("*", async (req, res) => {
 })
 
 // Start the server
-server.listen(3000, () => {
-    console.log(`App listening on port 3000`);
+server.listen(process.env.API_PORT, () => {
+    console.log(`App listening on port ${process.env.API_PORT}`);
 })

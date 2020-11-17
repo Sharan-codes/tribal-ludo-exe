@@ -1,4 +1,4 @@
-const roomModel = require('./models/room.js');
+const roomModel = require('./models/room');
 const global = require('../../global');
 
 let roomLib = [];

@@ -1,5 +1,5 @@
 const querystring = require('querystring');
-const responseHelper = require('./response.lib.js');
+const responseHelper = require('./response.lib');
 const global = require('../global');
 const Autoload = require('./autoload.class');
 const restBase = require("./restBase.class")

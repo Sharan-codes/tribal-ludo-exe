@@ -1,9 +1,9 @@
 const mgUserLib = require("../library/databaseLib/user.lib");
 const global = require("../global");
 
-const inviteActivityLib = require('../library/databaseLib/inviteActivity.lib.js');
+const inviteActivityLib = require('../library/databaseLib/inviteActivity.lib');
 const mgEventActivityLib = require('../library/databaseLib/eventActivity.lib');
-const mgEventLib = require('../library/databaseLib/event.lib.js');
+const mgEventLib = require('../library/databaseLib/event.lib');
 const websocketHelper = require('../library/utilityLib/websocketHelper');
 
 module.exports.handler = async (event) => {

@@ -1,4 +1,4 @@
-const userModel = require('./models/user.js');
+const userModel = require('./models/user');
 const global = require('../../global');
 
 let userLib = {};

@@ -1,6 +1,6 @@
-const inviteActivityModel = require('./models/inviteActivity.js');
+const inviteActivityModel = require('./models/inviteActivity');
 const global = require('../../global');
-const utility = require('../utilityLib/utility.js');
+const utility = require('../utilityLib/utility');
 
 let inviteActivityLib = [];
 

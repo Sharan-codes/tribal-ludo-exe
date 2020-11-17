@@ -1,10 +1,9 @@
 const global = require('../../global');
 const restBase = require('../../base/restBase.class');
 const utility = require("../../library/utilityLib/utility");
-const mgGameDataLib = require('../../library/databaseLib/gameData.lib.js');
+const mgGameDataLib = require('../../library/databaseLib/gameData.lib');
 const mgEventActivityLib = require('../../library/databaseLib/eventActivity.lib');
-const bytenode = require('bytenode');
-const mgUserLib = require('../../library/databaseLib/user.lib.jsc');
+const mgUserLib = require('../../library/databaseLib/user.lib');
 
 class masterIapAction extends restBase {
 

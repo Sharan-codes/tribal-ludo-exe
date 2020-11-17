@@ -1,4 +1,4 @@
-const masterIapModel = require('./models/masterIap.js');
+const masterIapModel = require('./models/masterIap');
 const global = require('../../global');
 
 let masterIapLib = [];

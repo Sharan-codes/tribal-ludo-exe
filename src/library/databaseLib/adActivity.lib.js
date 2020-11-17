@@ -1,6 +1,6 @@
-const adActivityModel = require('./models/adActivity.js');
+const adActivityModel = require('./models/adActivity');
 const global = require('../../global');
-const utility = require('../utilityLib/utility.js');
+const utility = require('../utilityLib/utility');
 
 let adActivityLib = [];
 
