@@ -1,4 +1,3 @@
-const bytenode = require('bytenode');
 
 const responseHelper = require('./src/base/response.lib');
 const Executor = require('./src/base/executor.class');

@@ -1,4 +1,3 @@
-const bytenode = require('bytenode');
 const express = require('express');
 const http = require('http');
 require('./src/base/env');
