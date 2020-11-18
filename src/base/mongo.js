@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('./env');
 
-const uri = ``
+const uri = `mongodb://${process.env.MONGO_DB_HOST}:${process.env.MONGO_DB_PORT}/${process.env.MONGO_DB_NAME}`
 const options = {
   // useNewUrlParser: true,
   // useCreateIndex: true,
@@ -18,8 +18,8 @@ const options = {
     authdb: 'admin'
   },
   authSource: 'admin',
-  user: '',
-  pass: ''
+  user: process.env.MONGO_DB_USER,
+  pass: process.env.MONGO_DB_PASS
 };
 
 mongoose.connect(uri, options).catch(error => {
