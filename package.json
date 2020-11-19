@@ -21,10 +21,8 @@
   "scripts": {
     "express": "node express.js",
     "offline": "sls offline --useSeparateProcesses start",
-    "deploy": "sls deploy --aws-profile JDA-DeveloperRole"
-  },
-  "pkg": {
-    "scripts": "src/methods/"
+    "deploy": "sls deploy --aws-profile JDA-DeveloperRole",
+    "livedeploy": "node src/deploy --shouldCopyDependency false --configPath 'src/config/.env'"
   },
   "author": "",
   "license": "ISC"
