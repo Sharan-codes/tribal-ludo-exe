@@ -61,7 +61,7 @@ class masterIapAction extends restBase {
         "xp": opponentUser.xp ? opponentUser.xp : 0,
         "match_data" : match_data
       };*/
-      console.log("RETURN API CALLED")
+      console.log("NOTIFY URL CALLED")
       this.setResponse("SUCCESS");
       return {
         "user_id": 1,
