@@ -18,7 +18,8 @@ app.get('/', async (req, res) => {
     res.sendFile(__dirname + '/src/public/userTransactions.html');
 });
 app.post('/', async (req, res) => {
-    res.sendFile(__dirname + '/src/public/userTransactions.html');
+    console.log(req.body)
+    res.redirect(`userTransactions.html?message=${req.body.txMsg}`);
 });
 
 app.all("*", async (req, res) => {

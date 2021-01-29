@@ -27,7 +27,7 @@
     <link href="css/userTransactions.css" rel="stylesheet" media="all">
 </head>
 
-<body>
+<body onload="load()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="/">Payments</a>
@@ -188,6 +188,13 @@
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+function load() {
+    const params = new URLSearchParams(document.location.search);
+    const message = params.get("message");
+    if (message) {
+        alert(decodeURIComponent(message));
+    }
+}
 $('#submitDeposit').click(function(event) {
     var x = document.getElementById("error");
     x.style.display = "none";
