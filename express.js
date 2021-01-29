@@ -14,6 +14,13 @@ app.use(express.urlencoded({
 }));
 app.use(express.static('src/public'));
 
+app.get('/', async (req, res) => {
+    res.sendFile(__dirname + '/src/public/userTransactions.html');
+});
+app.post('/', async (req, res) => {
+    res.sendFile(__dirname + '/src/public/userTransactions.html');
+});
+
 app.all("*", async (req, res) => {
 
     let event = {};

@@ -5,11 +5,13 @@
   "main": "express.js",
   "bin": "express.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "bytenode": "^1.1.7",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.28",
     "mongoose-sequence": "^5.2.2",
+    "node": "^12.0.0",
     "require-dir": "^1.2.0",
     "yargs": "^16.1.0"
   },
@@ -22,7 +24,7 @@
     "express": "node express.js",
     "offline": "sls offline --useSeparateProcesses start",
     "deploy": "sls deploy --aws-profile JDA-DeveloperRole",
-    "livedeploy": "node src/deploy --shouldCopyDependency false --configPath 'src/config/.env'"
+    "livedeploy": "node src/deploy --shouldCopyDependency true --configPath 'src/config/.env'"
   },
   "author": "",
   "license": "ISC"
