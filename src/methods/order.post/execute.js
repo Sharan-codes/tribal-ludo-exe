@@ -11,11 +11,12 @@ class orderAction extends restBase {
     try {
 
       const { userId, customerName, customerPhone, customerEmail, orderAmount } = this;
+      console.log("\nPAYMENT GATEWAY:");
 
-      console.log(customerName)
-      console.log(customerPhone)
-      console.log(customerEmail)
-      console.log(orderAmount)
+      console.log("customerName : "+customerName)
+      console.log("customerPhone : "+customerPhone)
+      console.log("customerEmail : "+customerEmail)
+      console.log("orderAmount : "+orderAmount)
 
       const params = {
         appId: PAYMENT_GATEWAY_APP_ID,
@@ -38,9 +39,6 @@ class orderAction extends restBase {
            }
       }
       const data = str.join("&");
-      /*const data = Object.entries(params)
-      .map((key, val) => `${key}=${encodeURIComponent(val)}`)
-      .join('&');*/
  
       let order = {
         method: 'post',
@@ -53,18 +51,14 @@ class orderAction extends restBase {
       let paymentLink, reason, orderResult;
       try {
         orderResult = await axios(order);
+        console.log("\nORDER RESULT:");
         console.log(orderResult.data)
+
         paymentLink = orderResult.data.paymentLink ? orderResult.data.paymentLink : "";
       } catch (e) {
         console.log(e.response.data)
         reason = e.response.data.reason ? e.response.data.reason : "";
       }
-    /*  let result = await utility.validateUser(userId, accessToken);
-
-      if (!result.success) {
-        this.setResponse(result.responseCode);
-        return {};
-      }*/
 
       this.setResponse("SUCCESS");
       return {

@@ -11,6 +11,7 @@ class withdrawAction extends restBase {
     try {
 
       const { userId, customerName, customerPhone, customerEmail, address1, amount, vpa } = this;
+      console.log("\nPAYOUTS:");
       console.log("USER DETAILS:")
       console.log("customerName : "+customerName)
       console.log("customerPhone : "+customerPhone)
@@ -19,7 +20,7 @@ class withdrawAction extends restBase {
       console.log("vpa : "+vpa)
       console.log("amount : "+amount)
 
-      let message;
+      let message, status;
 
       //Authenticate with the Cashfree system and obtain the authorization bearer token
       let authenticate = {
@@ -36,6 +37,7 @@ class withdrawAction extends restBase {
       console.log(authenticationResult.data);
 
       if (authenticationResult.data.status != 'SUCCESS') {
+        status =  authenticationResult.data.status ? authenticationResult.data.status : "";
         message = authenticationResult.data.message ? authenticationResult.data.message : "";
       } else {
         const token = authenticationResult.data.data.token;//token is valid for 10 min
@@ -65,6 +67,7 @@ class withdrawAction extends restBase {
         console.log(addBeneficiaryResult.data);
   
         if (addBeneficiaryResult.data.status != 'SUCCESS') {
+          status =  addBeneficiaryResult.data.status ? addBeneficiaryResult.data.status : "";
           message = addBeneficiaryResult.data.message ? addBeneficiaryResult.data.message : "";
         } else {
           //Request an amount transfer
@@ -89,11 +92,13 @@ class withdrawAction extends restBase {
           let transferResult = await axios(transferRequest);
           console.log("\nREQUEST FOR TRANSFER:");
           console.log(transferResult.data);
+          status =  transferResult.data.status ? transferResult.data.status : "";
           message = transferResult.data.message ? transferResult.data.message : "";
         }
       }
       this.setResponse("SUCCESS");
       return {
+        status: status ? status : "",
         message: message ? message : ""
       };
     } catch (e) {

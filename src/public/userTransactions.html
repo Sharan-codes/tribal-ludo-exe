@@ -28,15 +28,19 @@
 </head>
 
 <body onload="load()">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; width: 100%; top: 0; z-index: 9999">
       <div class="container">
         <a class="navbar-brand" href="/">Payments</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!--<div class="collapse navbar-collapse" id="navbarsExample07">
+        <div class="collapse navbar-collapse" id="navbarsExample07">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <h5 class="mt-3" style="color:white">BALANCE: </h5>
+            <li class="nav-item">
+                <h3 id="userAmount" class="nav-link">1000</h3>
+            </li>
+            <!--<li class="nav-item active">
               <a class="nav-link" href="/adminAddEvent">Add Event<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -44,13 +48,13 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/logout">Logout</a>
-            </li>
+            </li>-->
           </ul>
-        </div>-->
+        </div>
       </div>
     </nav>
-    <div class="page-wrapper bg-gra-03 p-t-20">
-        <div class="wrapper wrapper--w790">
+    <div class="page-wrapper bg-gra-03 p-t-20 mt-5">
+        <div class="wrapper wrapper--w790 mt-2">
             <div class="card card-5">
                 <div class="card-heading">
                     <h2 class="title">Deposit Money</h2>
@@ -146,8 +150,9 @@
                         <div class="form-row">
                             <div class="name">Amount</div>
                             <div class="value">
-                                <div class="input-group">
+                                <div class="input-group-desc">
                                     <input id="amount" class="input--style-5" type="number" placeholder="Amount" name="amount" required>
+                                    <label class="label--desc">amount in INR</label>
                                 </div>
                             </div>
                         </div>
@@ -191,8 +196,15 @@
 function load() {
     const params = new URLSearchParams(document.location.search);
     const message = params.get("message");
+    var status = params.get("status");
     if (message) {
         alert(decodeURIComponent(message));
+        status = (decodeURIComponent(status));
+        if (status == 'SUCCESS') {
+            var amount = params.get("amount");
+            amount = parseInt($("#userAmount").text()) + parseInt(amount);
+            $("#userAmount").text(amount);
+        }
     }
 }
 $('#submitDeposit').click(function(event) {
@@ -259,6 +271,11 @@ $('#submitWithdraw').click(function(event) {
             },
             success: function (result) {
                 alert(result.responseData.message);
+                if (result.responseData.status == 'SUCCESS') {
+                    var amount = $("#amount").val();
+                    amount = parseInt($("#userAmount").text()) - parseInt(amount);
+                    $("#userAmount").text(amount);
+                }
                 console.log(result.responseData);
             },
             error: function (request, status, error) {

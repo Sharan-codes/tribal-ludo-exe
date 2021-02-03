@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
 });
 app.post('/', async (req, res) => {
     console.log(req.body)
-    res.redirect(`userTransactions.html?message=${req.body.txMsg}`);
+    res.redirect(`userTransactions.html?amount=${req.body.orderAmount}&status=${req.body.txStatus}&message=${req.body.txMsg}`);
 });
 
 app.all("*", async (req, res) => {
